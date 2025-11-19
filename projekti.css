@@ -1,0 +1,78 @@
+body{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: burlywood;
+    color: brown;
+}
+header{
+    background-color:chocolate;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1{
+    margin: 0;
+}
+.clean-link{
+    color: inherit;
+    text-decoration: none;
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+#darkMode{
+    background-color: black;
+    color:antiquewhite;
+    
+}
+.hero{
+    text-align: center;
+    padding: 60px 20px;
+    background: brown;
+}
+.hero h2{
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: white;
+}
+.hero p{
+    color: white;
+    font-size: 1,5em;
+    margin-bottom: 10px;
+}
+.hero button{
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: rgb(120, 16, 16);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login{
+    background: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+form{
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+button[type="submit"]{
+    background-color: brown;
+    color: white;
+    font-size: 1em;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
