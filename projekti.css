@@ -26,14 +26,9 @@ nav ul{
     display: flex;
     gap: 15px;
 }
-#darkMode{
-    background-color: black;
-    color:antiquewhite;
-    
-}
 .hero{
     text-align: center;
-    padding: 60px 20px;
+    padding: 30px;
     background: brown;
 }
 .hero h2{
@@ -55,10 +50,9 @@ nav ul{
     border-radius: 5px;
     cursor: pointer;
 }
-.login{
-    background: white;
-    padding: 40px 20px;
-    text-align: center;
+.LoginForm{
+ justify-content: center;
+padding: 50px;
 }
 form{
     max-width: 500px;

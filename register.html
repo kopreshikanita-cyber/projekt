@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <header>
+         <h1><b><i><a href="projekti.html" class="clean-link">ReStyle</a></i></b></h1>
+    <nav>
+        <ul>
+        <li><a href="register.html">Register</a> </li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+    </header>
+    <div class=container>
+    <div class="RegisterForm">
+        <form id="RegisterForm">
+            <input type="text" name="Name and Last Name" id="Name and Last Name" placeholder="Name and Last Name" required>
+            <input type="text" name="Email" id="Email" placeholder="Email" required>
+            <input type="number" name="Phone Number" id="Phone Number" placeholder="Phone Number" required>
+            <input type="password" name="Password" id="Password" placeholder="Password" required>
+            <label for="Status">Status: </label>
+            <select class="Status" id="Status" >
+                <option value=""disabled selected>Select your Status</option>
+                <option value="Sell">Sell</option>
+                <option value="Buy">Buy</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: burlywood;
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color:chocolate;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1{
+    color: white;
+    margin: 0;
+    text-align: left;
+    border-bottom: none;
+     text-decoration: none;
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 20px;
+}
+.RegisterForm{
+    background-color: brown;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0px;
+    border: none;
+    border-radius: 5px;
+}
+form label{
+    display: block;
+    text-align: left;
+    margin top: 10px;
+    font weight: bold;
+}
+button{
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
