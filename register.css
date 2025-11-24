@@ -1,29 +1,28 @@
 body{
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: burlywood;
-    color: brown;
+    background-color: #F5F5F7;
+    color:#1F1F1F;
 }
 header{
     z-index: 10;
     position: relative;
-    background-color:chocolate;
-    color: white;
+    background-color:#8B5CF6;
+    color:#1F1F1F;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-header h1 a{
+header h1 {
     margin: 0;
-    text-align: left;
-    border-bottom: none;
-    text-decoration: none;
-    color: inherit;
 }
 .clean-link{
     color: inherit;
     text-decoration: none;
+}
+.clean-link:hover{
+    color: #F5F5F7;
 }
 nav ul{
     list-style: none;
@@ -34,7 +33,7 @@ nav ul{
 }
 .form-background{
     position: relative;
-     background: url('fotot/register.jpg') no-repeat center center/cover;
+     background: url('fotot/bbb.jpg') no-repeat center center/cover;
      height: 100vh;
      display: flex;
     justify-content: center;
@@ -57,6 +56,7 @@ nav ul{
     align-items: center;
     min-height: 90vh;
     padding: 20px;
+    box-sizing: border-box;
 }
 .RegisterForm{
     padding: 30px;
@@ -65,6 +65,7 @@ nav ul{
     max-width: 380px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     margin: 0 auto;
 }
 .container h2 {
     margin-bottom: 25px;
@@ -83,7 +84,6 @@ nav ul{
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background-color: #ff7a59;
     color: white;
     font-weight: 600;
     cursor: pointer;
@@ -91,7 +91,7 @@ nav ul{
 }
 
 .container button:hover {
-    background-color: #ff5722;
+    background-color:darkgreen;
 }
 .container p {
     margin-top: 15px;
@@ -129,7 +129,7 @@ form label{
     font-weight: bold;
 }
 button[type="submit"]{
-    background-color: darkgreen;
+    background-color:#df0a74;
     color: white;
     font-size: 1em;
     border: none;
