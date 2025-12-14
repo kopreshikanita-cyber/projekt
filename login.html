@@ -19,15 +19,65 @@
   <div class="login-background">
         <div class="overlay"></div> 
         <div class="container">
-            <div id="LoginForm">
+            <div class="LoginForm">
             <h2>Login</h2>
-            <form>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
+            <form id="loginForm" novalidate>
+                <label for="username">Username</label>
+                <input type="text" id="Username" name="username" placeholder="Username" required>
+                <div id="usernameError" class="error" aria-live="polite"></div>
+
+                <label for="password">Password</label>
+                <input type="password" id="Password" name="password" placeholder="Password" required>
+                <div id="passwordError" class="error" aria-live="polite"></div>
+
                 <button type="submit">Login</button>
+                <div id="formSuccess" class="success" role="status" aria-live="polite"></div>
             </form>
             <p>Don't have an account? <a href="register.html">Register</a></p>
         </div>
+        <script>
+            const usernameRe =  /^[a-zA-Z0-9._-]{3,15}$/;
+            const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+            const form = document.getElementById('loginForm');
+            const username = document.getElementById('Username');
+            const password = document.getElementById('Password');
+
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            const formSuccess = document.getElementById('formSuccess');
+
+            function clearErrors(){
+                [usernameError, passwordError, formSuccess].forEach(el => el.textContent = '');
+            }
+            function validateField(){
+                let valid = true;
+                clearErrors();
+            
+                if(!usernameRe.test(username.value.trim())){
+                    usernameError.textContent = 'Invalid username!';
+                    valid = false;
+                }
+                if(!passwordRe.test(password.value)){
+                    passwordError.textContent = 'Invalid password!';
+                    valid = false;
+                }
+                return valid;
+            }
+            username.addEventListener('input', () => {if (usernameRe.test(username.value.trim())) usernameError.textContent = '';});
+            password.addEventListener('input', () => {if (passwordRe.test(password.value)) passwordError.textContent = '';});
+
+            form.addEventListener('submit', (e) => {e.preventDefault();
+            formSuccess.textContent = '';
+
+                if(validateField()){
+                formSuccess.textContent = 'Successful login!';
+                form.reset();
+            } else{
+            formSuccess.textContent = '';
+            }
+        });
+        </script>
     </div>
 </div>
 </body>
