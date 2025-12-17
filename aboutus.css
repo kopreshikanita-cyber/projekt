@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:#F5F5F7;
+    color: #1F1F1F;
+}
+header{
+    background-color:#8B5CF6;
+    color:#1F1F1F;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1{
+    margin: 0;
+}
+.clean-link{
+    color: inherit;
+    text-decoration: none;
+}
+.clean-link:hover{
+    color: #F5F5F7;
+}
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+.pageHeader {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #6EE7B7, #8B5CF6);
+    color: #1F1F1F;
+}
+
+.pageHeader h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.pageHeader p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.aboutContent {
+    
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;  
+}
+
+.aboutText {
+    margin-top: 470px;
+    background-color: white;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.aboutText h3 {
+    color: #8B5CF6;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1.6em;
+}
+
+.aboutText p {
+    line-height: 1.7;
+    font-size: 1.05em;
+}
+.aboutText ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.aboutText ul li {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1F1F1F;
+}
+.aboutText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.aboutText{
+  width: 60%;
+  padding: 35px 40px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.6;
+  text-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
+.aboutText{
+  background: rgba(0, 0, 0, 0.25);     
+  backdrop-filter: blur(10px);       
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-in-out;
+}
+.aboutText:hover{
+    transform: translate(-50%, -50%) scale(1.03);
+}
+footer{
+    margin-top: 900px ;
+    background-color:#8B5CF6;
+    padding: 20 px;
+    text-align: center;
+    padding-top: 10px;
+    color:  #F5F5F7;
+    cursor: none;
+}

@@ -175,3 +175,11 @@ input:valid:not(:placeholder-shown) {
     background: transparent;
     min-height: 0;
 }
+footer{
+    background-color:#8B5CF6;
+    padding: 20 px;
+    text-align: center;
+    padding-top: 10px;
+    color:  #F5F5F7;
+    cursor: none;
+}
