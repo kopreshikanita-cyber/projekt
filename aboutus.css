@@ -1,9 +1,3 @@
-body{
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color:#F5F5F7;
-    color: #1F1F1F;
-}
 .pageHeader {
     text-align: center;
     padding: 60px 20px;
@@ -28,6 +22,7 @@ body{
     width : 80%;
     margin: 0 auto;
     padding: 40px 0;
+    position: relative;
 }
 
 .aboutText {
@@ -43,40 +38,4 @@ body{
     text-align: left;
     width: 100%;
     z-index: 1;
-    position: relative;
 }
-
-.slideshowContainer {
-    align-items: center;
-    font-family: 'Segoe UI light', Tahoma;
-    width: 400px;
-    margin:0 auto 100px auto;
-    position: relative;
-
-}
-
-#slideshow {
- width: 100%;
-    max-width: 800px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    display: block;
-}
-
-.slideshowContainer button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #8B5CF6;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.slideshowContainer button:hover {
-    background-color: #7a45e6;
-}
-

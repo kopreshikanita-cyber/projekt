@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="aboutus.css">
 </head>
 <body>
-   <?php 
+  <?php 
+   $page_title = "About"; 
    include "header.php";
-    ?>
-
+?>
     <section class="pageHeader">
     <h2>About ReStyle</h2>
     <p>Fashion that lasts longer than trends.</p>
@@ -39,40 +39,9 @@
             <li>Affordability without compromise</li>
         </ul>
     </div>
-    <div class = "slideshowContainer">
-            <img name = "mySlide" id = "slideshow" />
-            <button onclick = "changeImg()">Next Image</button>
-    </div>
     </section>
-    
     <?php 
     include "footer.php";
         ?>
- <script>
-        var i = 0;
-        var images = [ 
-            "fotot/sllider.jpg",
-            "fotot/package.jpg",
-            "fotot/slider.jpg",
-            "fotot/thankyou.jpg"
-    ];
-    var slideshow = document.getElementById("slideshow");
-    var size = "400px";
-    slideshow.style.width = size;
-    slideshow.style.height = size;
-    var nextBtn = document.querySelector("button");
-       function changeImg() {
-        var slide = document.getElementById("slideshow");
-        slide.src = images[i];
-        i = (i + 1) % images.length;
-        setTimeout(changeImg, 5000);
-    }
-    nextBtn.addEventListener("click", () => {
-    i = (i + 1) % images.length;
-    slideshow.src = images[i];
-});
-
-    window.onload = changeImg;
-</script>
 </body>
 </html>

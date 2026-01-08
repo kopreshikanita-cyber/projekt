@@ -1,9 +1,3 @@
-body{
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F5F5F7;
-    color:#958c8c;
-}
 .form-background{
     position: relative;
      background: url('fotot/bbb.jpg') no-repeat center center/cover;
