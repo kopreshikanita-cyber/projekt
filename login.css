@@ -4,31 +4,6 @@ body{
     background-color:#F5F5F7;
     color: #958c8c;
 }
-header{
-    background-color:#8B5CF6;
-    color:#1F1F1F;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header h1 {
-    margin: 0;
-}
-.clean-link{
-    text-decoration: none;
-    color: inherit;
-}
-.clean-link:hover{
-    color: #F5F5F7;
-}
-nav ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
 .login-background {
     position: relative;
     min-height: 100vh;
@@ -173,12 +148,4 @@ input:valid:not(:placeholder-shown) {
     text-align: center;
     background: transparent;
     min-height: 0;
-}
-footer{
-    background-color:#8B5CF6;
-    padding: 20 px;
-    text-align: center;
-    padding-top: 10px;
-    color:  #F5F5F7;
-    cursor: none;
 }
