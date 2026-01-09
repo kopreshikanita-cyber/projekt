@@ -9,8 +9,9 @@
 <body>
     <?php
     include "header.php";
+    include "sidenav.php";
         ?>
-
+    <div id="main" style="transition: margin-left .5s; padding: 20px;">
     <section class="pageHeader">
     <h2>Contact Us</h2>
     <p>Questions, feedbacks — reach out.</p>
@@ -29,6 +30,7 @@
         <button type="submit">Send Message</button>
     </form>
 </section>
+    </div>
     <?php 
     include "footer.php";
         ?>

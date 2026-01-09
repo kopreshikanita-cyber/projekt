@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReStyle</title>
     <link rel="stylesheet" href="aboutus.css">
+
 </head>
 <body>
   <?php 
-   $page_title = "About"; 
    include "header.php";
+   include "sidenav.php";
 ?>
+    <div id="main" style="transition: margin-left .5s; padding: 20px;">
     <section class="pageHeader">
     <h2>About ReStyle</h2>
     <p>Fashion that lasts longer than trends.</p>
@@ -40,6 +42,7 @@
         </ul>
     </div>
     </section>
+    </div>
     <?php 
     include "footer.php";
         ?>

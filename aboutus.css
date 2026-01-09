@@ -19,12 +19,12 @@
     display: flex;
     flex-direction: column; 
     align-items: center;   
-    width : 80%;
-    margin: 0 auto;
+    width : 90%;
+    margin: 20px auto;
     padding: 40px 0;
     position: relative;
+    min-height: 400px;
 }
-
 .aboutText {
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
@@ -37,5 +37,22 @@
     margin-bottom: 50px;    
     text-align: left;
     width: 100%;
-    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.aboutText:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+.aboutText h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color:#8B5CF6
+}
+.aboutText p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+.aboutText ul {
+    margin-top: 10px;
+    padding-left: 20px;
 }

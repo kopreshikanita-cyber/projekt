@@ -21,8 +21,14 @@
     justify-content: space-between;
     align-items: center;
 }
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 header h1{
     margin: 0;
+    font-size: 28px;
 }
 .clean-link{
     color: inherit;
@@ -38,14 +44,27 @@ nav ul{
     display: flex;
     gap: 15px;
 } 
+.menuBtn{
+    font-size: 30px;
+    cursor: pointer;
+    color: #1F1F1F;
+}
+.menuBtn:hover{
+    color: #F5F5F7;
+}
     </style>
     <header>
-    <h1><b><i><a href="home.php" class="clean-link">ReStyle</a></i></b></h1>
+        <div class="header-left">
+            <?php
+            if(!isset($hide_menu_btn)|| $hide_menu_btn !== true):
+            ?>
+            <span class="menuBtn" onclick="openNav()">&#9776;</span>
+            <?php endif; ?>
+            <h1><i><a href="home.php" class="clean-link">ReStyle</a></i></h1>
+        </div>
     <nav>
         <ul> 
         <li><a href="home.php" class="clean-link">Home</a></li>
-        <li><a href="aboutus.php" class="clean-link">About</a></li>
-        <li><a href="contactus.php" class="clean-link">Contact</a></li>
         <?php if(isset($page_title) && $page_title == "Login"): ?>
         <li><a href="register.php" class="clean-link">Register</a></li>
     <?php else: ?>

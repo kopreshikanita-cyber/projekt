@@ -4,20 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReStyle</title>
-    <link rel="stylesheet" href="projekti.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <?php 
-    include "header.php";
-        ?>
-
-    <div class="search-bar">
-        <input type="text"  placeholder="Search For Clothes...">
-        <button>Search</button>
-    </div>
-   <br>
-
-    <section class="hero" id="hero">
+    <?php include "header.php";?>
+    <?php include "sidenav.php";?>
+    <div id="main" style="transition: margin-left .5s; padding: 20px;">
+       <section class="hero" id="hero">
         <h2> Good clothes, second chances. </h2>
         <p>A marketplace for quality second-hand clothes at fair prices.</p>
     </section>
@@ -53,7 +46,7 @@
             </div>
         </div>
     </section>
-
+</div>
     <?php 
     include "footer.php";
         ?>
