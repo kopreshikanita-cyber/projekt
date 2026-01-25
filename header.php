@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -70,6 +70,12 @@ nav ul{
     <?php else: ?>
         <li><a href="login.php" class="clean-link">Login</a></li>
     <?php endif; ?>
+    <?php if(isset($_SESSION['username'])): ?>
+        <li><a href="logout.php" class="clean-link">Logout</a></li>
+        <?php else: ?>
+        <li><a href="login.php" class="clean-link">Login</a></li>
+    <?php endif; ?>
+
         </ul>
     </nav>
     </header>

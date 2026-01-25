@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +8,34 @@
 </head>
 <body>
     <?php
-    include "header.php";
+    include_once "header.php";
+    include_once "database.php";
+    include_once "user.php";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $db = new Database();
+        $connection = $db->getConnection();
+        $user = new User(db: $connection);
+
+        $username = $_POST["Username"];
+        $email = $_POST["Email"];
+        $phone = $_POST["Phone Number"];
+        $password = $_POST["Password"];
+
+        if($user->register(username: $username, email: $email, phone: $phone, password: $password)){
+            header(header: "Location: login.php");
+            exit;
+        } else {
+            echo "<h2>Error registering user!</h2>";
+        }
+    }
         ?>
     <div class="form-background">
     <div class="overlay"></div>
     <div class="container">
     <div class="RegisterForm">
         <h2>Register</h2>
-        <form id="RegisterForm" novalidate>
+        <form id="RegisterForm" method="POST" novalidate>
 
             <label for="username">Username</label>
             <input type="text" name="Username" id="Username" placeholder="3-15 characters;letters,numbers, ._- allowed." required>

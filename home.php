@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <?php include "header.php";?>
-    <?php include "sidenav.php";?>
+
+    <?php session_start();
+    if (!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit;
+    }
+    echo header("Location: home.php");
+    
+    include_once "header.php";
+    include_once "sidenav.php";
+    ?>
+   
     <div id="main" style="transition: margin-left .5s; padding: 20px;">
        <section class="hero" id="hero">
         <h2> Good clothes, second chances. </h2>
@@ -48,7 +58,7 @@
     </section>
 </div>
     <?php 
-    include "footer.php";
+    include_once "footer.php";
         ?>
 </body>
 </html>

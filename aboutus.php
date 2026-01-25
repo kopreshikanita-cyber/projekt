@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,7 @@
 </head>
 <body>
   <?php 
+    session_start();
    include "header.php";
    include "sidenav.php";
 ?>

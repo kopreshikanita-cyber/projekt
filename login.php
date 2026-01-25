@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,9 +7,28 @@
     <link rel="stylesheet" href="login.css">
 </head>
  <?php 
+ session_start();
     $page_title = "Login";
-    include "header.php";
-        ?>
+    include_once "header.php";
+    include_once "database.php";
+    include_once "user.php";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $db = new Database();
+        $connection = $db->getConnection();
+        $user = new User(db: $connection);
+
+        $username = $_POST["Username"];
+        $password = $_POST["Password"];
+
+        if($user->login(username: $username, password: $password)){
+            header(header: "Location: home.php");
+            exit;
+        } else {
+            echo "<h2>Invalid login credentials!</h2>";
+        }
+    }
+?>
 <body>
     <div class="login-page">
   <div class="login-background">
@@ -17,7 +36,7 @@
         <div class="container">
             <div class="LoginForm">
             <h2>Login</h2>
-            <form id="loginForm" novalidate>
+            <form id="loginForm" method="POST" novalidate>
                 <label for="username">Username</label>
                 <input type="text" id="Username" name="username" placeholder="Username" required>
                 <div id="usernameError" class="error" aria-live="polite"></div>
@@ -77,7 +96,7 @@
     </div>
 </div>
     <?php 
-    include "footer.php";
+    include_once "footer.php";
         ?>
 </body>
 </html>
