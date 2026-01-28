@@ -1,5 +1,52 @@
+<?php
 
-<html lang="en">
+session_start();
+include_once "header.php";
+include_once "database.php";
+include_once "user.php";
+
+$errors = [
+'username' => '',
+'email' => '',
+'phone' => ''
+];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        $db = new Database();
+        $connection = $db->getConnection();
+        $user = new User($connection);
+
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $password = $_POST["password"];
+
+        $haserrors = false;
+
+        if($user->isDuplicate('username', $username)){
+            $errors['username'] = 'Username already exists!';
+            $haserrors = true;
+        }
+        if($user->isDuplicate('email', $email)){
+            $errors['email'] = 'Email already exists!';
+            $haserrors = true;
+        }
+        if(!empty($phone) && $user->isDuplicate('phone', $phone)){
+            $errors['phone'] = 'Phone number already exists!';
+            $haserrors = true;
+        }
+        if(!$haserrors){
+            if($user->register(username: $username, email: $email, phone: $phone, password: $password)){
+            header("Location: login.php");
+            exit;
+        } else {
+            echo "<h2>Error registering user!</h2>";
+        }
+    }
+}
+?>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +54,6 @@
     <link rel="stylesheet" href="register.css">
 </head>
 <body>
-    <?php
-    include_once "header.php";
-    include_once "database.php";
-    include_once "user.php";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $db = new Database();
-        $connection = $db->getConnection();
-        $user = new User(db: $connection);
-
-        $username = $_POST["Username"];
-        $email = $_POST["Email"];
-        $phone = $_POST["Phone Number"];
-        $password = $_POST["Password"];
-
-        if($user->register(username: $username, email: $email, phone: $phone, password: $password)){
-            header(header: "Location: login.php");
-            exit;
-        } else {
-            echo "<h2>Error registering user!</h2>";
-        }
-    }
-        ?>
     <div class="form-background">
     <div class="overlay"></div>
     <div class="container">
@@ -38,19 +62,19 @@
         <form id="RegisterForm" method="POST" novalidate>
 
             <label for="username">Username</label>
-            <input type="text" name="Username" id="Username" placeholder="3-15 characters;letters,numbers, ._- allowed." required>
-            <div id="usernameError" class="error" aria-live="polite"></div>
+            <input type="text" name="username" id="Username" placeholder="3-15 characters;letters,numbers, ._- allowed." required>
+            <div id="usernameError" class="error"><?php echo $errors['username']; ?></div>
 
             <label for="email">Email</label>
-            <input type="text" name="Email" id="Email" placeholder="Email" required>
-            <div id="emailError" class="error" aria-live="polite"></div>
+            <input type="text" name="email" id="Email" placeholder="Email" required>
+            <div id="emailError" class="error"><?php echo $errors['email']; ?></div>
 
             <label for="phone">Phone Number</label>
-            <input type="tel" name="Phone Number" id="PhoneNumber" placeholder="Phone Number" required>
-            <div id="phoneError" class="error" aria-live="polite"></div>
+            <input type="tel" name="phone" id="PhoneNumber" placeholder="Phone Number" required>
+            <div id="phoneError" class="error"><?php echo $errors['phone']; ?></div>
 
             <label for="password">Password</label>
-            <input type="password" name="Password" id="Password" placeholder="At least 8 characters,uppercase letter,digit and symbol." required>
+            <input type="password" name="password" id="Password" placeholder="At least 8 characters,uppercase letter,digit and symbol." required>
             <div id="passwordError" class="error" aria-live="polite"></div>
 
             <label for="confirm">Confirm Password</label>
@@ -117,12 +141,9 @@
             phone.addEventListener('input', () => {if(phone.value.trim() === '' || phoneRe.test(phone.value.trim())) phoneError.textContent = '';});
             password.addEventListener('input', () => {if(passwordRe.test(password.value))passwordError.textContent = '';});
             confirm.addEventListener('input', () => {if (password.value === confirm.value)confirmError.textContent = '';});
-            form.addEventListener('submit', (e) => {e.preventDefault();formSuccess.textContent = '';
-                if(validateField()){
-                    formSuccess.textContent = 'Successful registration!';
-                    form.reset();
-                }else{
-                    formSuccess.textContent = '';
+            form.addEventListener('submit', (e) => {
+                if(!validateField()){
+                    e.preventDefault();
                 }
             });
         </script>

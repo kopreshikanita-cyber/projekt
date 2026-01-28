@@ -8,6 +8,15 @@ class User{
         $this->conn = $db;
 }
 
+
+public function isDuplicate($field, $value) {
+    $query = "SELECT * FROM " . $this->table_name . " WHERE " . $field . " = :value LIMIT 1";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':value', $value);
+    $stmt->execute();
+    return $stmt->rowCount() > 0;
+}
+
 public function register ($username, $email, $phone, $password): bool{
     $query = "INSERT INTO {$this->table_name} (username, email, phone, password) VALUES (:username, :email, :phone, :password)";
     $stmt = $this->conn->prepare($query);
@@ -15,14 +24,15 @@ public function register ($username, $email, $phone, $password): bool{
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':phone', $phone);
-    $stmt->bindParam(':password', password_hash(password: $password, algo: PASSWORD_DEFAULT));
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $stmt->bindParam(':password', $hashedPassword);
 
     if($stmt->execute()){
         return true;
     }
     return false;
     }
-}
+
 public function login ($username, $password): bool{
     $query = "SELECT username, email, phone, password FROM {$this->table_name} WHERE username = :username";
     $stmt = $this->conn->prepare($query);
@@ -30,15 +40,12 @@ public function login ($username, $password): bool{
     $stmt->bindParam(':username', $username);
     $stmt->execute();
 
-    if($stmt->rowCount() > 0){
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if(password_verify(password: $password, hash: $row['password'])){
-            session_start();
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['email'] = $row['email'];
-            return true;
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($row && password_verify($password, $row['password'])){
+            return $row;
         }
-    }
+    
     return false;
+}
 }
 ?>

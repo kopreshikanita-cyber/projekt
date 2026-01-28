@@ -1,48 +1,58 @@
+<?php 
+session_start();
+  $page_title = "Login";
 
-<html lang="en">
+    include_once "database.php";
+    include_once "user.php";
+
+    $error_message = '';
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $db = new Database();
+        $conn = $db->getConnection();
+        $user = new User($conn);
+
+        $username = trim($_POST["username"] ?? '');
+        $password = $_POST["password"] ?? '';
+
+        if ($user->login($username, $password)) {
+        $_SESSION['username'] = $username;
+        header("Location: home.php");
+        exit;
+    } else {
+        $error_message = "Invalid login credentials!";
+    }
+}
+ ?>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
- <?php 
- session_start();
-    $page_title = "Login";
-    include_once "header.php";
-    include_once "database.php";
-    include_once "user.php";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $db = new Database();
-        $connection = $db->getConnection();
-        $user = new User(db: $connection);
-
-        $username = $_POST["Username"];
-        $password = $_POST["Password"];
-
-        if($user->login(username: $username, password: $password)){
-            header(header: "Location: home.php");
-            exit;
-        } else {
-            echo "<h2>Invalid login credentials!</h2>";
-        }
-    }
-?>
 <body>
+    <?php 
+    include_once "header.php";
+    ?>
     <div class="login-page">
   <div class="login-background">
         <div class="overlay"></div> 
         <div class="container">
             <div class="LoginForm">
             <h2>Login</h2>
+            <?php if (!empty($error_message)): ?>
+        <div class="error-message" role="alert" aria-live="assertive">
+            <?php echo htmlspecialchars($error_message); ?>
+        </div>
+    <?php endif; ?>
             <form id="loginForm" method="POST" novalidate>
                 <label for="username">Username</label>
-                <input type="text" id="Username" name="username" placeholder="Username" required>
+                <input type="text" id="username" name="username" placeholder="Username" required>
                 <div id="usernameError" class="error" aria-live="polite"></div>
 
                 <label for="password">Password</label>
-                <input type="password" id="Password" name="password" placeholder="Password" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
                 <div id="passwordError" class="error" aria-live="polite"></div>
 
                 <button type="submit">Login</button>
@@ -55,8 +65,8 @@
             const passwordRe = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
             const form = document.getElementById('loginForm');
-            const username = document.getElementById('Username');
-            const password = document.getElementById('Password');
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
 
             const usernameError = document.getElementById('usernameError');
             const passwordError = document.getElementById('passwordError');
@@ -82,15 +92,11 @@
             username.addEventListener('input', () => {if (usernameRe.test(username.value.trim())) usernameError.textContent = '';});
             password.addEventListener('input', () => {if (passwordRe.test(password.value)) passwordError.textContent = '';});
 
-            form.addEventListener('submit', (e) => {e.preventDefault();
-            formSuccess.textContent = '';
-
-                if(validateField()){
-                formSuccess.textContent = 'Successful login!';
-                form.reset();
-            } else{
-            formSuccess.textContent = '';
+            form.addEventListener('submit', (e) => {
+                if(!validateField()){
+                e.preventDefault();
             }
+
         });
         </script>
     </div>

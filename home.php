@@ -1,5 +1,7 @@
-
-<html lang="en">
+<?php 
+ session_start();
+   ?>
+   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +9,17 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-
-    <?php session_start();
-    if (!isset($_SESSION['username'])) {
-        header("Location: login.php");
-        exit;
-    }
-    echo header("Location: home.php");
-    
+    <?php 
     include_once "header.php";
     include_once "sidenav.php";
     ?>
-   
-    <div id="main" style="transition: margin-left .5s; padding: 20px;">
+       <div id="main" style="transition: margin-left .5s; padding: 20px;">
        <section class="hero" id="hero">
+        <?php if(isset($_SESSION['username'])): ?>
+        <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
+    <?php else: ?>
         <h2> Good clothes, second chances. </h2>
-        <p>A marketplace for quality second-hand clothes at fair prices.</p>
+    <?php endif; ?>
     </section>
     <br>
         <section class="about-preview">

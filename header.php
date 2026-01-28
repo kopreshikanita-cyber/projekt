@@ -65,16 +65,15 @@ nav ul{
     <nav>
         <ul> 
         <li><a href="home.php" class="clean-link">Home</a></li>
-        <?php if(isset($page_title) && $page_title == "Login"): ?>
-        <li><a href="register.php" class="clean-link">Register</a></li>
-    <?php else: ?>
-        <li><a href="login.php" class="clean-link">Login</a></li>
-    <?php endif; ?>
-    <?php if(isset($_SESSION['username'])): ?>
-        <li><a href="logout.php" class="clean-link">Logout</a></li>
+       <?php if(isset($_SESSION['username' ])): ?>
+            <li><a href="logout.php" class="clean-link">Logout</a></li>
         <?php else: ?>
-        <li><a href="login.php" class="clean-link">Login</a></li>
-    <?php endif; ?>
+            <?php if(isset($page_title) && $page_title == "Login"): ?>
+                <li><a href="register.php" class="clean-link">Register</a></li>
+            <?php else: ?>
+                <li><a href="login.php" class="clean-link">Login</a></li>
+            <?php endif; ?>
+        <?php endif; ?>
 
         </ul>
     </nav>

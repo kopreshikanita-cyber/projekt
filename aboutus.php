@@ -1,5 +1,8 @@
-
-<html lang="en">
+ <?php 
+    session_start();
+   include "header.php";
+   include "sidenav.php";
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +11,6 @@
 
 </head>
 <body>
-  <?php 
-    session_start();
-   include "header.php";
-   include "sidenav.php";
-?>
     <div id="main" style="transition: margin-left .5s; padding: 20px;">
     <section class="pageHeader">
     <h2>About ReStyle</h2>
